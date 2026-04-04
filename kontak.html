@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak & Pemesanan - TAN'S RENT CAR</title>
+    <link rel="icon" href="logo tans rental car.jpeg" type="image/png">
+    <link rel="stylesheet" href="https://fonts.font.im/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --primary-light: #004d99;
+            --secondary: #ffd700;
+            --accent: #ff6b6b;
+            --light: #f4f7f6;
+            --dark: #1a1e23;
+            --gray: #6c757d;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 30px rgba(0, 51, 102, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 51, 102, 0.12);
+            --radius: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding-top: 80px; 
+            overflow-x: hidden; 
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header Tetap dengan Glassmorphism */
+        header {
+            background-color: rgba(0, 51, 102, 0.85);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 0;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .logo h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--secondary), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        /* Navigasi Desktop & Mobile */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a.nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav a.nav-link:hover, nav a.nav-link.active {
+            color: var(--secondary);
+        }
+
+        nav a.nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        nav a.nav-link:hover::after, nav a.nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Tombol Pesan Sekarang Header */
+        .btn-header-cta {
+            background: linear-gradient(135deg, var(--secondary), #ffaa00);
+            color: var(--primary) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid transparent;
+        }
+
+        .btn-header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Page Banner Spesifik Halaman Kontak */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 60px 0 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 50px;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .page-banner h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .page-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        /* Section Kontak & Form */
+        .contact-section {
+            padding-bottom: 100px;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        /* Info Kontak Kiri */
+        .contact-info {
+            background: linear-gradient(145deg, var(--primary) 0%, #001a33 100%);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .contact-info.loaded {
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Hiasan background abstrak di dalam card info */
+        .contact-info::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
+        }
+
+        .info-icon-wrapper {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .info-item:hover .info-icon-wrapper {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .info-item i {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .info-item:hover i {
+            color: var(--primary);
+        }
+
+        .info-text h4 {
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .info-text p {
+            color: #d1d8e0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Form Kanan */
+        .contact-form-container {
+            background: white;
+            padding: 45px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(0,0,0,0.03);
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .contact-form-container.loaded {
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s;
+        }
+
+        .contact-form-container h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #eef0f3;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: var(--dark);
+            background-color: #f8f9fa;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(0, 51, 102, 0.08);
+        }
+
+        /* Customizing select element appearance */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23003366' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px !important;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--secondary), #ffaa00);
+            color: var(--primary);
+            border: none;
+            padding: 16px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .submit-btn i {
+            font-size: 1.3rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #ffaa00, var(--secondary));
+        }
+
+        /* Footer Sama Seperti Paket Wisata */
+        footer {
+            background: linear-gradient(135deg, #001a33 0%, var(--primary) 100%);
+            color: white;
+            padding: 70px 0 25px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            color: var(--secondary);
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-5px) rotate(8deg);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            animation: none;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Animasi */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 51, 102, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+
+            nav ul.active {
+                display: flex;
+                animation: fadeInDown 0.3s ease forwards;
+            }
+
+            nav a.nav-link {
+                font-size: 1.1rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn-header-cta.desktop-cta { display: none; }
+            
+            .btn-header-cta.mobile-cta {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                margin-top: 10px;
+                padding: 12px;
+            }
+
+            .mobile-menu-btn { display: block; }
+            
+            .contact-wrapper { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 993px) {
+            .btn-header-cta.mobile-cta { display: none !important; }
+        }
+
+        @media (max-width: 768px) {
+            .page-banner {
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+                padding: 40px 20px 30px;
+            }
+            .page-banner h2 { font-size: 2rem; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .contact-form-container, .contact-info { padding: 30px 20px; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="logo_tans_rental_car-removebg-preview.png" alt="TAN'S RENT CAR Logo">
+                <h1>TAN'S RENT CAR</h1>
+            </a>
+            
+            <nav>
+                <ul id="mobileMenu">
+                    <li><a href="index.html" class="nav-link">Beranda</a></li>
+                    <li><a href="tentangkami.html" class="nav-link">Tentang Kami</a></li>
+                    <li><a href="index.html#mitra" class="nav-link">Mitra</a></li> 
+                    <li><a href="persyaratan.html" class="nav-link">Persyaratan</a></li>
+                    <li><a href="armada.html" class="nav-link">Armada</a></li>
+                    <li><a href="kontak.html" class="nav-link active">Kontak</a></li>
+                    <!-- Tombol Pesan Khusus Mobile Menu -->
+                    <li>
+                        <a href="#formPemesanan" class="btn-header-cta mobile-cta" onclick="toggleMobileMenu()">
+                            <i class="fas fa-edit"></i> Isi Formulir
+                        </a>
+                    </li>
+                </ul>
+                <!-- Tombol Pesan Khusus Desktop (Scrolls ke form) -->
+                <a href="#formPemesanan" class="btn-header-cta desktop-cta">
+                    <i class="fas fa-edit"></i> Pesan Sekarang
+                </a>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h2>Kontak & Pemesanan</h2>
+            <p>Punya pertanyaan atau siap untuk menyewa? Isi formulir di bawah ini dan tim kami akan segera memprosesnya melalui WhatsApp.</p>
+        </div>
+    </section>
+
+    <!-- Contact & Form Section -->
+    <section class="contact-section" id="formPemesanan">
+        <div class="container">
+            <div class="contact-wrapper">
+                
+                <!-- Bagian Informasi (Kiri) -->
+                <div class="contact-info" id="infoCard">
+                    <h3>Informasi TAN'S RENT CAR</h3>
+                    
+                    <div class="info-item">
+                        <div class="info-icon-wrapper">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Alamat Kantor</h4>
+                            <p>Jl. Beo No. 17, Medan Sunggal<br>Kota Medan, Sumatera Utara</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon-wrapper">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Layanan Pelanggan</h4>
+                            <p>+62 813-7523-4626<br>(Telepon & WhatsApp Aktif)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon-wrapper">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p>tansanugerahgemilang@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon-wrapper">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Minggu: 24 Jam Online<br>Siap melayani kapan pun Anda butuhkan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian Form (Kanan) -->
+                <div class="contact-form-container" id="formCard">
+                    <h3>Formulir Pemesanan Cepat</h3>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="nama">Nama Lengkap Pemesan *</label>
+                            <input type="text" id="nama" placeholder="Masukkan nama lengkap Anda" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nowa">Nomor WhatsApp *</label>
+                                <input type="tel" id="nowa" placeholder="Contoh: 08123456789" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="kota">Asal Kota *</label>
+                                <input type="text" id="kota" placeholder="Kota asal Anda" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mobil">Tipe Mobil yang Ingin Disewa *</label>
+                            <select id="mobil" required>
+                                <option value="" disabled selected>-- Pilih Tipe Mobil --</option>
+                                <option value="Honda Brio Matic">Honda Brio Matic</option>
+                                <option value="Toyota Grand New Avanza">Toyota Grand New Avanza</option>
+                                <option value="Toyota All New Avanza">Toyota All New Avanza</option>
+                                <option value="Toyota Veloz Hybrid">Toyota Veloz Hybrid</option>
+                                <option value="Toyota Rush">Toyota Rush</option>
+                                <option value="Toyota Kijang Innova Diesel Matic">Toyota Kijang Innova Diesel Matic</option>
+                                <option value="Toyota Kijang Innova Zenix 2.0 G Hybrid">Toyota Kijang Innova Zenix 2.0 G Hybrid</option>
+                                <option value="Toyota Kijang Innova Zenix Q Hybrid">Toyota Kijang Innova Zenix Q Hybrid</option>
+                                <option value="Toyota Fortuner VRZ">Toyota Fortuner VRZ</option>
+                                <option value="Toyota Alphard Transformer">Toyota Alphard Transformer</option>
+                                <option value="Toyota Alphard HEV">Toyota Alphard HEV</option>
+                                <option value="Toyota HiAce Premio">Toyota HiAce Premio</option>
+                                <option value="Lainnya / Ingin Konsultasi Dulu">Lainnya / Ingin Konsultasi Dulu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="layanan">Jenis Layanan *</label>
+                            <select id="layanan" required>
+                                <option value="" disabled selected>-- Pilih Jenis Layanan --</option>
+                                <option value="Sewa Mobil + Driver">Sewa Mobil + Driver</option>
+                                <option value="Sewa Mobil Lepas Kunci">Sewa Mobil Lepas Kunci</option>
+                                <option value="Sewa Mobil untuk Pernikahan">Sewa Mobil untuk Pernikahan</option>
+                                <option value="Sewa Mobil untuk Wisata">Sewa Mobil untuk Wisata</option>
+                                <option value="Sewa Mobil untuk Antar Jemput Bandara">Sewa Mobil untuk Antar Jemput Bandara</option>
+                                <option value="Lainnya / Ingin Konsultasi Dulu">Lainnya / Ingin Konsultasi Dulu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tgl_mulai">Tanggal Mulai Sewa *</label>
+                                <input type="date" id="tgl_mulai" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tgl_selesai">Tanggal Selesai Sewa *</label>
+                                <input type="date" id="tgl_selesai" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            Cek Ketersediaan Sekarang <i class="fab fa-whatsapp"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TAN'S RENT CAR</h3>
+                    <p>Menyediakan layanan rental mobil terpercaya dengan armada terawat dan pelayanan profesional sejak 2023. Prioritas utama kami adalah kepuasan Anda.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/6281375234626" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/tansrental?igsh=aW9obWxkbWVneWtj" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@tans.rent.cars?_r=1&_t=ZS-954TIKtgtpn" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Link Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="tentangkami.html"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+                        <li><a href="index.html#mitra"><i class="fas fa-chevron-right"></i> Mitra</a></li>
+                        <li><a href="persyaratan.html"><i class="fas fa-chevron-right"></i> Persyaratan</a></li>
+                        <li><a href="armada.html"><i class="fas fa-chevron-right"></i> Armada</a></li>
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Layanan</h3>
+                    <ul class="footer-links">
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Rental Harian</a></li>
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Rental Bulanan</a></li>
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Antar Jemput Bandara</a></li>
+                        <li><a href="paket-wisata.html"><i class="fas fa-chevron-right"></i> Paket Wisata</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Info Kontak</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.google.com/maps/place/3%C2%B035'09.2%22N+98%C2%B038'24.3%22E/@3.585895,98.6394513,196m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d3.585895!4d98.640095?hl=id&entry=ttu&g_ep=EgoyMDI2MDMzMC4wIKXMDSoASAFQAw%3D%3D"><i class="fas fa-map-marker-alt"></i> Jl. Beo No. 17, Medan Sunggal</a></li>
+                        <li><a href="tel:081375234626"><i class="fas fa-phone"></i> 0813-7523-4626</a></li>
+                        <li><a href="mailto:tansanugerahgemilang@gmail.com"><i class="fas fa-envelope"></i> tansanugerahgemilang@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> 24 Jam Online</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 TAN'S RENT CAR. Hak Cipta Dilindungi | Design by <a href="https://www.instagram.com/beerage111/" target="_blank" style="color: var(--secondary); text-decoration: underline;">BRIT</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tombol WhatsApp Mengambang -->
+    <a href="https://wa.me/6281375234626" class="whatsapp-float" target="_blank" title="Hubungi Kami di WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // LOGIKA MENU MOBILE
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+
+        document.addEventListener('click', function(e) {
+            if (mobileMenu.classList.contains('active') && !mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+                mobileMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Efek transparan header saat di-scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.padding = '8px 0';
+                header.style.backgroundColor = 'rgba(0, 51, 102, 0.95)';
+            } else {
+                header.style.padding = '12px 0';
+                header.style.backgroundColor = 'rgba(0, 51, 102, 0.85)';
+            }
+        });
+
+        // Animasi Scroll (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('loaded');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Objek yang mau dianimasikan
+        observer.observe(document.getElementById('infoCard'));
+        observer.observe(document.getElementById('formCard'));
+
+        // Mencegah pemilihan tanggal sebelum hari ini
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("tgl_mulai").setAttribute('min', today);
+        document.getElementById("tgl_selesai").setAttribute('min', today);
+
+        // Jika tanggal mulai diubah, ubah minimal tanggal selesai menjadi tanggal mulai
+        document.getElementById('tgl_mulai').addEventListener('change', function() {
+            document.getElementById('tgl_selesai').setAttribute('min', this.value);
+        });
+
+        // LOGIKA PENGIRIMAN FORM KE WHATSAPP
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Mencegah reload halaman
+
+            // 1. Ambil semua data dari inputan
+            const nama = document.getElementById('nama').value;
+            const nowa = document.getElementById('nowa').value;
+            const kota = document.getElementById('kota').value;
+            const mobil = document.getElementById('mobil').value;
+            const layanan = document.getElementById('layanan').value; 
+            
+            // Format ulang tanggal agar lebih rapi dibaca di WA
+            const tgl_mulai_mentah = document.getElementById('tgl_mulai').value;
+            const tgl_selesai_mentah = document.getElementById('tgl_selesai').value;
+            
+            // 2. Susun template pesan untuk WhatsApp
+            const pesan = `Halo admin *TAN'S RENT CAR*, saya ingin mengecek ketersediaan mobil dengan detail pesanan berikut:
+
+👤 *Nama Lengkap:* ${nama}
+📱 *No. WhatsApp:* ${nowa}
+📍 *Asal Kota:* ${kota}
+🚗 *Tipe Mobil:* ${mobil}
+🎯 *Jenis Layanan:* ${layanan}
+📅 *Tanggal Mulai:* ${tgl_mulai_mentah}
+📅 *Tanggal Selesai:* ${tgl_selesai_mentah}
+
+Mohon informasi mengenai ketersediaan dan rincian harganya. Terima kasih!`;
+
+            // 3. Encode pesan ke format URL
+            const pesanEncoded = encodeURIComponent(pesan);
+            
+            // 4. Nomor tujuan admin 
+            const nomorAdmin = "6281375234626";
+
+            // 5. Buat link WhatsApp API dan arahkan pengguna
+            const linkWhatsApp = `https://wa.me/${nomorAdmin}?text=${pesanEncoded}`;
+            window.open(linkWhatsApp, '_blank'); 
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armada TAN'S RENT CAR - Rental Mobil Medan</title>
+    <link rel="icon" href="logo tans rental car.jpeg" type="image/png">
+    <link rel="stylesheet" href="https://fonts.font.im/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --primary-light: #004d99;
+            --secondary: #ffd700;
+            --accent: #ff6b6b;
+            --light: #f4f7f6;
+            --dark: #1a1e23;
+            --gray: #6c757d;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 30px rgba(0, 51, 102, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 51, 102, 0.12);
+            --radius: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding-top: 80px; 
+            overflow-x: hidden; 
+            /* padding-bottom: 80px; telah dihapus agar footer mentok ke bawah */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header Tetap dengan Glassmorphism */
+        header {
+            background-color: rgba(0, 51, 102, 0.85);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 0;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .logo h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--secondary), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        /* Navigasi Desktop & Mobile */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a.nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav a.nav-link:hover, nav a.nav-link.active {
+            color: var(--secondary);
+        }
+
+        nav a.nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        nav a.nav-link:hover::after, nav a.nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Tombol Pesan Sekarang Header */
+        .btn-header-cta {
+            background: linear-gradient(135deg, var(--secondary), #ffaa00);
+            color: var(--primary) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid transparent;
+        }
+
+        .btn-header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Page Banner Spesifik Halaman Armada */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 60px 0 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .page-banner h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .page-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        /* Section Armada */
+        .armada-section {
+            padding-bottom: 80px;
+        }
+
+        /* Filter Armada */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: 30px;
+            background: white;
+            color: var(--gray);
+            border: 2px solid #e1e5eb;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 6px 15px rgba(0, 51, 102, 0.2);
+        }
+
+        /* Grid Armada */
+        .armada-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .armada-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .armada-card.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animasi khusus saat difilter */
+        .armada-card.filter-anim {
+            animation: filterFadeIn 0.5s ease forwards;
+        }
+
+        .armada-card:hover {
+            transform: translateY(-12px) !important;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .armada-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background-color: #f0f0f0; /* Fallback color */
+        }
+
+        .armada-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .armada-card:hover .armada-img img {
+            transform: scale(1.1);
+        }
+
+        /* Badge mengambang di atas gambar */
+        .armada-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            backdrop-filter: blur(5px);
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-lepas-kunci {
+            background: rgba(255, 215, 0, 0.95); /* Kuning */
+            color: var(--primary);
+        }
+
+        .badge-pelayanan {
+            background: rgba(255, 107, 107, 0.95); /* Merah/Accent */
+            color: white;
+        }
+
+        .armada-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: white;
+        }
+
+        .armada-info::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to top, white, transparent);
+            z-index: 1;
+        }
+
+        .armada-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .armada-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .spec-item i {
+            color: var(--primary-light);
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .pesan-btn {
+            background: var(--light);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .pesan-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 51, 102, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #001a33 0%, var(--primary) 100%);
+            color: white;
+            padding: 70px 0 25px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            color: var(--secondary);
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-5px) rotate(8deg);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            animation: none;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Animasi */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes filterFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 51, 102, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+
+            nav ul.active {
+                display: flex;
+                animation: fadeInDown 0.3s ease forwards;
+            }
+
+            nav a.nav-link {
+                font-size: 1.1rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn-header-cta.desktop-cta { display: none; }
+            
+            .btn-header-cta.mobile-cta {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                margin-top: 10px;
+                padding: 12px;
+            }
+
+            .mobile-menu-btn { display: block; }
+            
+            .armada-specs {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+
+        @media (min-width: 993px) {
+            .btn-header-cta.mobile-cta { display: none !important; }
+        }
+
+        @media (max-width: 768px) {
+            .page-banner {
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+                padding: 40px 20px 30px;
+            }
+            .page-banner h2 { font-size: 2rem; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 1.8rem; }
+            
+            .filter-container { gap: 8px; }
+            .filter-btn { padding: 8px 16px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="logo_tans_rental_car-removebg-preview.png" alt="TAN'S RENT CAR Logo">
+                <h1>TAN'S RENT CAR</h1>
+            </a>
+            
+            <nav>
+                <ul id="mobileMenu">
+                    <li><a href="index.html" class="nav-link">Beranda</a></li>
+                    <li><a href="tentangkami.html" class="nav-link">Tentang Kami</a></li>
+                    <li><a href="index.html#mitra" class="nav-link">Mitra</a></li> 
+                    <li><a href="persyaratan.html" class="nav-link">Persyaratan</a></li>
+                    <li><a href="armada.html" class="nav-link active">Armada</a></li>
+                    <li><a href="kontak.html" class="nav-link">Kontak</a></li>
+                    <!-- Tombol Pesan Khusus Mobile Menu -->
+                    <li>
+                        <a href="kontak.html" class="btn-header-cta mobile-cta">
+                            <i class="fas fa-edit"></i> Pesan Sekarang
+                        </a>
+                    </li>
+                </ul>
+                <!-- Tombol Pesan Khusus Desktop -->
+                <a href="kontak.html" class="btn-header-cta desktop-cta">
+                    <i class="fas fa-edit"></i> Pesan Sekarang
+                </a>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h2>Armada Kami</h2>
+            <p>Temukan pilihan kendaraan premium yang bersih, nyaman, dan terawat untuk menemani setiap perjalanan Anda di Sumatera Utara.</p>
+        </div>
+    </section>
+
+    <!-- Section Armada -->
+    <section id="armada" class="armada-section">
+        <div class="container">
+            <!-- Filter -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Tampilkan Semua</button>
+                <button class="filter-btn" data-filter="bisa-lepas-kunci"><i class="fas fa-key"></i> Bisa Lepas Kunci</button>
+                <button class="filter-btn" data-filter="pelayanan"><i class="fas fa-user-tie"></i> Pelayanan (Dengan Sopir)</button>
+            </div>
+
+            <!-- Grid Armada -->
+            <div class="armada-grid" id="armadaGrid">
+                
+                <!-- Armada 1 -->
+                <div class="armada-card" data-category="bisa-lepas-kunci">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-lepas-kunci">Lepas Kunci</div>
+                        <img src="Honda Brio Matic.jpeg" alt="Honda Brio Matic" onerror="this.src='https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Honda Brio Matic</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 2-5 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 35L (Bensin)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Honda%20Brio%20Matic." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 2 -->
+                <div class="armada-card" data-category="bisa-lepas-kunci">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-lepas-kunci">Lepas Kunci</div>
+                        <img src="Toyota Grand New Avanza.jpeg" alt="Toyota Grand New Avanza" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Grand New Avanza</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Manual</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 5-7 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 45L (Bensin)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Grand%20New%20Avanza." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 3 -->
+                <div class="armada-card" data-category="bisa-lepas-kunci">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-lepas-kunci">Lepas Kunci</div>
+                        <img src="Toyota All New Avanza.jpeg" alt="Toyota All New Avanza" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota All New Avanza</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 5-7 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 43L (Bensin)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20All%20New%20Avanza." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 4 -->
+                <div class="armada-card" data-category="bisa-lepas-kunci">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-lepas-kunci">Lepas Kunci</div>
+                        <img src="Toyota Veloz Hybrid.jpeg" alt="Toyota Veloz Hybrid" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Veloz Hybrid</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 5-7 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 43L (Bensin)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Veloz%20Hybrid." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 5 -->
+                <div class="armada-card" data-category="bisa-lepas-kunci">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-lepas-kunci">Lepas Kunci</div>
+                        <img src="Toyota Rush.jpeg" alt="Toyota Rush" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Rush</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Manual</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 5-7 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 50L (Bensin)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Rush." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 6 -->
+                <div class="armada-card" data-category="bisa-lepas-kunci">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-lepas-kunci">Lepas Kunci</div>
+                        <img src="Toyota Kijang Innova Diesel Matic.jpeg" alt="Toyota Kijang Innova Diesel Matic" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Innova Diesel</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 5-7 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 55L (Diesel)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Innova%20Diesel%20Matic." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 7 -->
+                <div class="armada-card" data-category="pelayanan">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-pelayanan">Pelayanan</div>
+                        <img src="Toyota Kijang Innova Zenix 2.0 G Hybrid.jpeg" alt="Toyota Kijang Innova Zenix 2.0 G Hybrid" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Innova Zenix 2.0 G Hybrid</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 7 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 52L (Hybrid)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Innova%20Zenix%202.0%20G%20Hybrid." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 8 -->
+                <div class="armada-card" data-category="pelayanan">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-pelayanan">Pelayanan</div>
+                        <img src="Toyota Kijang Innova Zenix Q Hybrid.jpeg" alt="Toyota Kijang Innova Zenix Q Hybrid" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Innova Zenix Q Hybrid</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 7 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 52L (Hybrid)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Innova%20Zenix%20Q%20Hybrid." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 9 -->
+                <div class="armada-card" data-category="pelayanan">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-pelayanan">Pelayanan</div>
+                        <img src="Toyota Fortuner VRZ.jpeg" alt="Toyota Fortuner VRZ" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Fortuner VRZ</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 5-7 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 80L (Diesel)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Fortuner%20VRZ." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 10 -->
+                <div class="armada-card" data-category="pelayanan">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-pelayanan">Pelayanan</div>
+                        <img src="Toyota Alphard Transformer.jpeg" alt="Toyota Alphard Transformer" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Alphard Transformer</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 2-6 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 75L (Bensin)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Alphard%20Transformer." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 11 -->
+                <div class="armada-card" data-category="pelayanan">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-pelayanan">Pelayanan</div>
+                        <img src="Toyota Alphard HEV.png" alt="Toyota Alphard HEV" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Alphard HEV</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 2-6 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 60L (Hybrid)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Alphard%20HEV." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Armada 12 (Diubah menjadi Toyota Hiace Premium) -->
+                <div class="armada-card" data-category="pelayanan">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-pelayanan">Pelayanan</div>
+                        <img src="Toyota HiAce Premio.jpeg" alt="Toyota Hiace Premium" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Hiace Premium</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Manual</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 11-16 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 70L (Diesel)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Hiace%20Premium." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Armada 13 (Baru: Toyota Hiace) -->
+                <div class="armada-card" data-category="pelayanan">
+                    <div class="armada-img">
+                        <div class="armada-badge badge-pelayanan">Pelayanan</div>
+                        <img src="toyota hiace biasa.jpeg" alt="Toyota Hiace" onerror="this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop'">
+                    </div>
+                    <div class="armada-info">
+                        <h3>Toyota Hiace</h3>
+                        <div class="armada-specs">
+                            <div class="spec-item"><i class="fas fa-cogs"></i> Manual</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 11-16 Penumpang</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> 70L (Diesel)</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626?text=Halo%20Admin,%20saya%20tertarik%20menyewa%20Toyota%20Hiace." class="pesan-btn">
+                            <span>Pilih Unit Ini</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TAN'S RENT CAR</h3>
+                    <p>Menyediakan layanan rental mobil terpercaya dengan armada terawat dan pelayanan profesional sejak 2023. Prioritas utama kami adalah kepuasan Anda.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/6281375234626" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/tansrental?igsh=aW9obWxkbWVneWtj" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@tans.rent.cars?_r=1&_t=ZS-954TIKtgtpn" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Link Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="tentangkami.html"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+                        <li><a href="index.html#mitra"><i class="fas fa-chevron-right"></i> Mitra</a></li>
+                        <li><a href="persyaratan.html"><i class="fas fa-chevron-right"></i> Persyaratan</a></li>
+                        <li><a href="armada.html"><i class="fas fa-chevron-right"></i> Armada</a></li>
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Layanan</h3>
+                    <ul class="footer-links">
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Rental Harian</a></li>
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Rental Bulanan</a></li>
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Antar Jemput Bandara</a></li>
+                        <li><a href="paket-wisata.html"><i class="fas fa-chevron-right"></i> Paket Wisata</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Info Kontak</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jl. Beo No. 17, Medan</a></li>
+                        <li><a href="tel:081375234626"><i class="fas fa-phone"></i> 0813-7523-4626</a></li>
+                        <li><a href="mailto:tansanugerahgemilang@gmail.com"><i class="fas fa-envelope"></i> tansanugerahgemilang@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> 24 Jam Online</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 TAN'S RENT CAR. Hak Cipta Dilindungi | Design by <a href="https://www.instagram.com/beerage111/" target="_blank" style="color: var(--secondary); text-decoration: underline;">BRIT</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tombol WhatsApp Mengambang -->
+    <a href="https://wa.me/6281375234626" class="whatsapp-float" target="_blank" title="Hubungi Kami di WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Toggle Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+
+        // Close menu clicking outside
+        document.addEventListener('click', function(e) {
+            if (mobileMenu.classList.contains('active') && !mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+                mobileMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Animasi Scroll (Intersection Observer) dengan efek bertingkat (Staggered)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('loaded');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Inisialisasi delay animasi pada kartu armada awal load
+        const cards = document.querySelectorAll('.armada-card');
+        cards.forEach((card, index) => {
+            card.dataset.delay = index * 100; // Delay berurutan per card
+            observer.observe(card);
+        });
+
+        // Efek transparan header saat di-scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.padding = '8px 0';
+                header.style.backgroundColor = 'rgba(0, 51, 102, 0.95)';
+            } else {
+                header.style.padding = '12px 0';
+                header.style.backgroundColor = 'rgba(0, 51, 102, 0.85)';
+            }
+        });
+
+        // Filter Armada Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Hapus kelas aktif dari semua tombol filter
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active'); // Aktifkan yang diklik
+
+                const filterValue = button.getAttribute('data-filter');
+
+                cards.forEach(card => {
+                    // Reset animasi sebelumnya jika ada
+                    card.classList.remove('filter-anim');
+                    
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'flex';
+                        // Pancing reflow DOM agar animasi CSS berjalan ulang
+                        void card.offsetWidth; 
+                        card.classList.add('filter-anim');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

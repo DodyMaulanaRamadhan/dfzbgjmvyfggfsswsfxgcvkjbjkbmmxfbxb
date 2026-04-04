@@ -1,0 +1,87 @@
+[debug] [2026-03-29T02:01:05.912Z] ----------------------------------------------------------------------
+[debug] [2026-03-29T02:01:05.920Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dodim\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2026-03-29T02:01:05.920Z] CLI Version:   15.12.0
+[debug] [2026-03-29T02:01:05.920Z] Platform:      win32
+[debug] [2026-03-29T02:01:05.921Z] Node Version:  v22.18.0
+[debug] [2026-03-29T02:01:05.921Z] Time:          Sun Mar 29 2026 09:01:05 GMT+0700 (Western Indonesia Time)
+[debug] [2026-03-29T02:01:05.921Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\D\PROJECT 1,5JT
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2026-03-29T02:03:51.218Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-29T02:03:51.226Z] > authorizing via signed-in user (dodimaulanaramadhan04@gmail.com)
+[debug] [2026-03-29T02:03:51.251Z] Checked if tokens are valid: true, expires at: 1774753215699
+[debug] [2026-03-29T02:03:51.252Z] Checked if tokens are valid: true, expires at: 1774753215699
+[debug] [2026-03-29T02:03:51.267Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2026-03-29T02:03:52.152Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-03-29T02:03:52.152Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] 
+=== Functions Setup
+[debug] [2026-03-29T02:03:58.199Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-29T02:03:58.200Z] > authorizing via signed-in user (dodimaulanaramadhan04@gmail.com)
+[debug] [2026-03-29T02:03:58.200Z] [iam] checking project rentalssmobilmedan for permissions ["firebase.projects.get"]
+[debug] [2026-03-29T02:03:58.202Z] Checked if tokens are valid: true, expires at: 1774753215699
+[debug] [2026-03-29T02:03:58.202Z] Checked if tokens are valid: true, expires at: 1774753215699
+[debug] [2026-03-29T02:03:58.202Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/rentalssmobilmedan:testIamPermissions [none]
+[debug] [2026-03-29T02:03:58.202Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/rentalssmobilmedan:testIamPermissions  x-goog-user-project=rentalssmobilmedan
+[debug] [2026-03-29T02:03:58.203Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/rentalssmobilmedan:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2026-03-29T02:03:59.461Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/rentalssmobilmedan:testIamPermissions 200
+[debug] [2026-03-29T02:03:59.461Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/rentalssmobilmedan:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2026-03-29T02:03:59.464Z] Checked if tokens are valid: true, expires at: 1774753215699
+[debug] [2026-03-29T02:03:59.464Z] Checked if tokens are valid: true, expires at: 1774753215699
+[debug] [2026-03-29T02:03:59.464Z] Checked if tokens are valid: true, expires at: 1774753215699
+[debug] [2026-03-29T02:03:59.464Z] Checked if tokens are valid: true, expires at: 1774753215699
+[debug] [2026-03-29T02:03:59.465Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-03-29T02:03:59.465Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/cloudfunctions.googleapis.com  x-goog-user-project=rentalssmobilmedan
+[debug] [2026-03-29T02:03:59.466Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/runtimeconfig.googleapis.com [none]
+[debug] [2026-03-29T02:03:59.466Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/runtimeconfig.googleapis.com  x-goog-user-project=rentalssmobilmedan
+[debug] [2026-03-29T02:04:00.995Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/cloudfunctions.googleapis.com 200
+[debug] [2026-03-29T02:04:00.995Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-03-29T02:04:00.997Z] Checked if tokens are valid: true, expires at: 1774753215699
+[debug] [2026-03-29T02:04:00.997Z] Checked if tokens are valid: true, expires at: 1774753215699
+[debug] [2026-03-29T02:04:00.997Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/cloudfunctions.googleapis.com:enable [none]
+[debug] [2026-03-29T02:04:00.997Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/cloudfunctions.googleapis.com:enable  x-goog-user-project=rentalssmobilmedan
+[debug] [2026-03-29T02:04:01.105Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/runtimeconfig.googleapis.com 200
+[debug] [2026-03-29T02:04:01.105Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2026-03-29T02:04:01.577Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/cloudfunctions.googleapis.com:enable 200
+[debug] [2026-03-29T02:04:01.577Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/rentalssmobilmedan/services/cloudfunctions.googleapis.com:enable [omitted]
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[info] +  Wrote functions/requirements.txt 
+[info] +  Wrote functions/.gitignore 
+[info] +  Wrote functions/main.py 
+[debug] [2026-03-29T02:04:30.801Z] Running command with virtualenv: command="C:\D\PROJECT 1,5JT\functions\venv\Scripts\activate.bat", args=["","&&","pip3","install","--upgrade","pip"]
+[debug] [2026-03-29T02:28:17.437Z] Error: spawn "C:\D\PROJECT 1,5JT\functions\venv\Scripts\activate.bat" ENOENT
+    at notFoundError (C:\Users\dodim\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\cross-spawn\lib\enoent.js:6:26)
+    at verifyENOENT (C:\Users\dodim\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\cross-spawn\lib\enoent.js:40:16)
+    at cp.emit (C:\Users\dodim\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\cross-spawn\lib\enoent.js:27:25)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+    at Process.callbackTrampoline (node:internal/async_hooks:130:17)
+[error] 
+[error] Error: An unexpected error has occurred.

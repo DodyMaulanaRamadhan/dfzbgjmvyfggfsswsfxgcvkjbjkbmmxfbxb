@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAN'S RENT CAR - Rental Mobil Medan</title>
+    <link rel="icon" href="logo tans rental car.jpeg" type="image/png">
+    <link rel="stylesheet" href="https://fonts.font.im/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --primary-light: #004d99;
+            --secondary: #ffd700;
+            --accent: #ff6b6b;
+            --light: #f4f7f6;
+            --dark: #1a1e23;
+            --gray: #6c757d;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 30px rgba(0, 51, 102, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 51, 102, 0.12);
+            --radius: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Header Tetap dengan Glassmorphism --- */
+        header {
+            background-color: rgba(0, 51, 102, 0.85);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 0;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .logo h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--secondary), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        /* Navigasi Desktop & Mobile */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a.nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav a.nav-link:hover, nav a.nav-link.active {
+            color: var(--secondary);
+        }
+
+        nav a.nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        nav a.nav-link:hover::after, nav a.nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Tombol Pesan Sekarang Header */
+        .btn-header-cta {
+            background: linear-gradient(135deg, var(--secondary), #ffaa00);
+            color: var(--primary) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid transparent;
+        }
+
+        .btn-header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 51, 102, 0.85) 0%, rgba(0, 26, 51, 0.95) 100%), 
+                        url('Danau-Toba-Wisata-Danau-Toba.jpeg') no-repeat center center/cover;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.15) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            animation: fadeInDown 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .hero h2 span {
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.3s both;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--secondary), #ffaa00);
+            color: var(--primary);
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* --- Section Global Styles --- */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            font-weight: 800;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), transparent);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* --- About Section --- */
+        .about-section {
+            background-color: white;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .text-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .text-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .image-content {
+            position: relative;
+            border-radius: var(--radius);
+            z-index: 1;
+        }
+
+        .image-content::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--secondary);
+            border-radius: var(--radius);
+            z-index: -1;
+            transition: var(--transition);
+        }
+        
+        .mitra-section .image-content::before {
+            left: auto;
+            right: -20px;
+            border-color: rgba(0, 51, 102, 0.1);
+            background-color: rgba(0, 51, 102, 0.03);
+        }
+
+        .image-content img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            display: block;
+            transition: var(--transition);
+            object-fit: cover;
+        }
+
+        .image-content:hover img {
+            transform: translateY(-10px);
+        }
+        
+        .image-content:hover::before {
+            transform: translate(10px, 10px);
+        }
+
+        /* --- Services Section --- */
+        .services-section {
+            background-color: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(0, 51, 102, 0.1);
+        }
+
+        .service-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .service-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .service-icon {
+            position: absolute;
+            bottom: -25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), #ffaa00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            border: 3px solid white;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .service-content {
+            padding: 40px 25px 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-content h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .service-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .btn-outline i {
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+        }
+
+        .btn-outline:hover {
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover i {
+            transform: translateX(5px);
+        }
+
+        /* --- Fleet Section --- */
+        .fleet-section {
+            background-color: white;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .car-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .badge-gold {
+            background: linear-gradient(45deg, var(--secondary), #ffaa00);
+            color: var(--primary);
+        }
+
+        .badge-red {
+            background: linear-gradient(45deg, var(--accent), #ff4757);
+            color: white;
+        }
+
+        .car-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .car-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .car-card:hover .car-img img {
+            transform: scale(1.08);
+        }
+
+        .car-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .car-info h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .car-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .spec-item i {
+            color: var(--primary);
+            opacity: 0.7;
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .rent-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .rent-btn:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #001a33 100%);
+            color: white;
+            position: relative;
+        }
+
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .testimonials-section .section-title h2,
+        .testimonials-section .section-title p {
+            color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .testimonial-card::before {
+            content: '\f10d'; /* FontAwesome quote-left */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 3rem;
+            color: rgba(255, 215, 0, 0.15);
+            line-height: 1;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .customer-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 2px solid var(--secondary);
+        }
+
+        .customer-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .customer-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 2px;
+        }
+
+        .rating {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* --- Gallery Section (Desain Carousel/Slider 3:4) --- */
+        .gallery-section {
+            background-color: var(--light);
+            padding-bottom: 120px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 20px 5px;
+            -ms-overflow-style: none; /* IE dan Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none; /* Chrome, Safari dan Opera */
+        }
+
+        .gallery-item {
+            flex: 0 0 280px; /* Lebar setiap item foto */
+            aspect-ratio: 3 / 4; /* Memaksa rasio potret 3:4 */
+            border-radius: 16px;
+            overflow: hidden;
+            scroll-snap-align: center;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: grab;
+            background-color: #000; /* DITAMBAHKAN: Latar hitam agar sisa area foto (letterbox) terlihat menyatu seperti galeri HP */
+        }
+
+        .gallery-item:active {
+            cursor: grabbing;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* DIUBAH DARI 'cover' MENJADI 'contain' agar foto tampil utuh tanpa terpotong/zoom */
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Menghapus scale(1.05) pada gambar saat hover agar tidak nge-zoom ketika disentuh kursor */
+        .gallery-item:hover img {
+            transform: scale(1);
+        }
+
+        /* Overlay Animasi Hover */
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 51, 102, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px 20px 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-overlay p {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+
+        .gallery-item:hover .gallery-overlay h4,
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+        }
+
+        /* Tombol Carousel */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            font-size: 1.2rem;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: -15px;
+        }
+
+        .carousel-btn.next {
+            right: -15px;
+        }
+
+        /* --- Mitra Section --- */
+        .mitra-section {
+            background-color: white;
+        }
+
+        /* --- Contact Section --- */
+        .contact-section {
+            background-color: var(--light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(0, 51, 102, 0.1);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            background: var(--primary);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .contact-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .map-placeholder {
+            height: 350px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: linear-gradient(135deg, #001a33 0%, var(--primary) 100%);
+            color: white;
+            padding: 70px 0 25px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .footer-links a i {
+            margin-right: 12px;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-5px) rotate(8deg);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* --- Floating WhatsApp Button --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            animation: none;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* --- Animations Classes --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .reveal.fade-left { transform: translateX(-50px); }
+        .reveal.fade-right { transform: translateX(50px); }
+        .reveal.active { opacity: 1; transform: translate(0, 0); }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 992px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 51, 102, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+
+            nav ul.active {
+                display: flex;
+                animation: fadeInDown 0.3s ease forwards;
+            }
+
+            nav a.nav-link {
+                font-size: 1.1rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn-header-cta.desktop-cta { display: none; }
+            
+            .btn-header-cta.mobile-cta {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                margin-top: 10px;
+                padding: 12px;
+            }
+
+            .mobile-menu-btn { display: block; }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .mitra-section .text-content { order: 2; }
+            .mitra-section .image-content { order: 1; }
+            
+            .hero h2 { font-size: 2.8rem; }
+        }
+
+        @media (min-width: 993px) {
+            .btn-header-cta.mobile-cta { display: none !important; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; }
+            .hero-buttons a { width: 100%; justify-content: center; }
+            
+            .section { padding: 60px 0; }
+            .section-title h2 { font-size: 2rem; }
+            
+            .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 1.8rem; }
+
+            /* Gallery Carousel Responsiveness Mobile */
+            .gallery-item {
+                flex: 0 0 230px; /* Lebih kecil sedikit di HP */
+            }
+            .carousel-btn.prev { left: 5px; }
+            .carousel-btn.next { right: 5px; }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                flex: 0 0 200px; /* Lebih kecil lagi di HP kecil */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="logo_tans_rental_car-removebg-preview.png" alt="TAN'S RENT CAR Logo">
+                <h1>TAN'S RENT CAR</h1>
+            </a>
+            
+            <nav>
+                <ul id="mobileMenu">
+                    <li><a href="#home" class="nav-link active">Beranda</a></li>
+                    <li><a href="tentangkami.html" class="nav-link">Tentang Kami</a></li>
+                    <li><a href="#mitra" class="nav-link">Mitra</a></li> 
+                    <li><a href="persyaratan.html" class="nav-link">Persyaratan</a></li>
+                    <li><a href="armada.html" class="nav-link">Armada</a></li>
+                    <li><a href="kontak.html" class="nav-link">Kontak</a></li>
+                    <!-- Tombol Pesan Khusus Mobile Menu -->
+                    <li>
+                        <a href="https://wa.me/6281375234626" target="_blank" class="btn-header-cta mobile-cta">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </a>
+                    </li>
+                </ul>
+                <!-- Tombol Pesan Khusus Desktop -->
+                <a href="https://wa.me/6281375234626" target="_blank" class="btn-header-cta desktop-cta">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h2>Solusi Transportasi Rental Mobil <span>Terbaik</span> di Medan</h2>
+            <p>TAN'S RENT CAR menyediakan layanan sewa kendaraan terpercaya dengan armada terawat, harga kompetitif, dan pelayanan profesional sejak 2023.</p>
+            <div class="hero-buttons">
+                <a href="#fleet" class="btn-primary"><i class="fas fa-car"></i> Lihat Armada</a>
+                <a href="https://wa.me/6281375234626" target="_blank" class="btn-secondary"><i class="fab fa-whatsapp"></i> Hubungi Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Tentang TAN'S RENT CAR</h2>
+                <p>Kami adalah perusahaan rental mobil terkemuka di Medan yang berdedikasi memberikan pelayanan transportasi terbaik, aman, dan nyaman.</p>
+            </div>
+            <div class="content-grid">
+                <div class="text-content reveal fade-left">
+                    <h3>Pilihan Cerdas Perjalanan Anda</h3>
+                    <p>Berdiri sejak 2023, <strong>TAN'S RENT CAR</strong> tumbuh menjadi salah satu penyedia jasa transportasi terpercaya di Sumatera Utara. Kami memahami betul pentingnya kendaraan yang prima dan pelayanan yang handal untuk setiap mobilitas Anda.</p>
+                    <p>Misi kami adalah memastikan setiap pelanggan mendapatkan pengalaman berkendara yang bebas masalah, didukung oleh armada terbaru yang selalu dalam kondisi bersih dan terawat secara berkala.</p>
+                    <a href="tentangkami.html" class="btn-outline">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="image-content reveal fade-right">
+                    <img src="tampilan_beranda_tentang_kami-removebg.jpeg" alt="TAN'S RENT CAR Office">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Layanan Kami</h2>
+                <p>Solusi transportasi komprehensif yang dirancang khusus untuk memenuhi segala kebutuhan mobilitas Anda.</p>
+            </div>
+            <div class="services-grid">
+                
+                <div class="service-card reveal">
+                    <div class="service-img-wrapper">
+                        <img src="driver+supir.png" alt="Sewa Mobil + Driver">
+                        <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Mobil + Driver</h3>
+                        <p>Nikmati perjalanan santai dengan driver profesional yang ramah dan menguasai rute Sumatera Utara.</p>
+                        <a href="https://wa.me/6281375234626" target="_blank" class="btn-outline">Pesan Sekarang <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="service-card reveal" style="transition-delay: 0.1s;">
+                    <div class="service-img-wrapper">
+                        <img src="lepas-kunci.png" alt="Sewa Mobil Lepas Kunci">
+                        <div class="service-icon"><i class="fas fa-key"></i></div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Lepas Kunci</h3>
+                        <p>Bebas berkendara sendiri dengan privasi dan fleksibilitas penuh. Armada siap pakai dengan syarat mudah.</p>
+                        <a href="https://wa.me/6281375234626" target="_blank" class="btn-outline">Pesan Sekarang <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="service-card reveal" style="transition-delay: 0.2s;">
+                    <div class="service-img-wrapper">
+                        <img src="sewaharian-bulanan.png" alt="Harian s/d Bulanan">
+                        <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Harian & Bulanan</h3>
+                        <p>Pilihan sewa fleksibel untuk operasional perusahaan atau kebutuhan pribadi dengan tarif bersaing.</p>
+                        <a href="https://wa.me/6281375234626" target="_blank" class="btn-outline">Pesan Sekarang <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="service-card reveal" style="transition-delay: 0.3s;">
+                    <div class="service-img-wrapper">
+                        <img src="mobil_pernikahan.png" alt="Mobil Pernikahan">
+                        <div class="service-icon"><i class="fas fa-heart"></i></div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Mobil Pernikahan</h3>
+                        <p>Hadirkan kemewahan di hari spesial Anda dengan armada premium yang dihias elegan.</p>
+                        <a href="https://wa.me/6281375234626" target="_blank" class="btn-outline">Pesan Sekarang <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card reveal" style="transition-delay: 0.4s;">
+                    <div class="service-img-wrapper">
+                        <img src="paket_wisata.png" alt="Paket Wisata Medan">
+                        <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Paket Wisata</h3>
+                        <p>Jelajahi destinasi wisata terbaik dengan paket liburan praktis kami. Sudah termasuk armada nyaman, supir, dan BBM.</p>
+                        <a href="paket-wisata.html" class="btn-outline">Lihat Paket <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="section fleet-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Armada Kami</h2>
+                <p>Pilih kendaraan yang paling sesuai dengan kebutuhan dan gaya Anda. Seluruh unit dijamin prima dan terawat.</p>
+            </div>
+            <div class="fleet-grid">
+                
+                <div class="car-card reveal">
+                    <span class="car-badge badge-gold">Lepas Kunci / Driver</span>
+                    <div class="car-img">
+                        <img src="Honda Brio Matic.jpeg" alt="Honda Brio Matic">
+                    </div>
+                    <div class="car-info">
+                        <h3>Honda Brio</h3>
+                        <div class="car-specs">
+                            <div class="spec-item"><i class="fas fa-cog"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 4-5 Seat</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> Bensin</div>
+                            <div class="spec-item"><i class="fas fa-snowflake"></i> AC Dingin</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626" target="_blank" class="rent-btn">
+                            <i class="fab fa-whatsapp"></i> Pesan Unit
+                        </a>
+                    </div>
+                </div>
+
+                <div class="car-card reveal" style="transition-delay: 0.1s;">
+                    <span class="car-badge badge-gold">Lepas Kunci / Driver</span>
+                    <div class="car-img">
+                        <img src="Toyota All New Avanza.jpeg" alt="Toyota All New Avanza">
+                    </div>
+                    <div class="car-info">
+                        <h3>All New Avanza</h3>
+                        <div class="car-specs">
+                            <div class="spec-item"><i class="fas fa-cog"></i> Matic / MT</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 7 Seat</div>
+                            <div class="spec-item"><i class="fas fa-gas-pump"></i> Bensin</div>
+                            <div class="spec-item"><i class="fas fa-suitcase"></i> Bagasi Luas</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626" target="_blank" class="rent-btn">
+                            <i class="fab fa-whatsapp"></i> Pesan Unit
+                        </a>
+                    </div>
+                </div>
+
+                <div class="car-card reveal" style="transition-delay: 0.2s;">
+                    <span class="car-badge badge-red">Termasuk Driver</span>
+                    <div class="car-img">
+                        <img src="Toyota Kijang Innova Zenix Q Hybrid.jpeg" alt="Toyota Innova Zenix">
+                    </div>
+                    <div class="car-info">
+                        <h3>Innova Zenix Hybrid</h3>
+                        <div class="car-specs">
+                            <div class="spec-item"><i class="fas fa-cog"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 7 Seat</div>
+                            <div class="spec-item"><i class="fas fa-leaf"></i> Hybrid</div>
+                            <div class="spec-item"><i class="fas fa-star"></i> Premium</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626" target="_blank" class="rent-btn">
+                            <i class="fab fa-whatsapp"></i> Pesan Unit
+                        </a>
+                    </div>
+                </div>
+
+                <div class="car-card reveal" style="transition-delay: 0.3s;">
+                    <span class="car-badge badge-red">Termasuk Driver</span>
+                    <div class="car-img">
+                        <img src="Toyota Alphard HEV.png" alt="Toyota Alphard HEV">
+                    </div>
+                    <div class="car-info">
+                        <h3>Toyota Alphard HEV</h3>
+                        <div class="car-specs">
+                            <div class="spec-item"><i class="fas fa-cog"></i> Matic</div>
+                            <div class="spec-item"><i class="fas fa-users"></i> 7 Seat</div>
+                            <div class="spec-item"><i class="fas fa-leaf"></i> Hybrid</div>
+                            <div class="spec-item"><i class="fas fa-crown"></i> VIP Luxury</div>
+                        </div>
+                        <a href="https://wa.me/6281375234626" target="_blank" class="rent-btn">
+                            <i class="fab fa-whatsapp"></i> Pesan Unit
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;" class="reveal">
+                <a href="armada.html" class="btn-outline" style="font-size: 1.1rem; border: 2px solid var(--primary); padding: 12px 30px; border-radius: 50px;">
+                    Lihat Semua Armada <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Apa Kata Mereka?</h2>
+                <p>Ratusan pelanggan telah membuktikan kenyamanan layanan kami.</p>
+            </div>
+            <div class="testimonial-grid">
+                
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-header">
+                        <div class="customer-img">
+                            <img src="apakatamereka1.jpeg" alt="Budi Santoso">
+                        </div>
+                        <div class="customer-info">
+                            <h4>Budi Santoso</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Sangat memuaskan! Mobil Zenix yang kami sewa sangat bersih dan wangi. Driver Pak Anto juga sangat ramah dan merekomendasikan tempat kuliner enak di Medan. Bintang lima!"</p>
+                </div>
+
+                <div class="testimonial-card reveal" style="transition-delay: 0.2s;">
+                    <div class="testimonial-header">
+                        <div class="customer-img">
+                            <img src="apakatamereka2.jpeg" alt="Siti Rahmah">
+                        </div>
+                        <div class="customer-info">
+                            <h4>Siti Rahmah</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Sebagai pengusaha, saya sering butuh rental mobil dadakan untuk tamu VIP. Tan's Rent Car selalu bisa diandalkan. Alphard-nya top, proses administrasinya juga ga ribet."</p>
+                </div>
+
+                <div class="testimonial-card reveal" style="transition-delay: 0.4s;">
+                    <div class="testimonial-header">
+                        <div class="customer-img">
+                            <img src="apakatamereka3.jpeg" alt="Agus Prasetyo">
+                        </div>
+                        <div class="customer-info">
+                            <h4>Agus Prasetyo</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Sewa Avanza lepas kunci buat keliling Danau Toba bareng keluarga. Unitnya sehat, nanjak ga ada masalah sama sekali. Respons admin di WhatsApp juga super cepat."</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Pelanggan Section (Slider 3:4) -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Galeri Pelanggan</h2>
+                <p>Momen berharga pelanggan setia kami bersama armada TAN'S RENT CAR.</p>
+            </div>
+            
+            <div class="carousel-wrapper reveal fade-up">
+                <!-- Tombol Navigasi Kiri -->
+                <button class="carousel-btn prev" id="prevBtn" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <!-- Track Foto -->
+                <div class="carousel-track" id="galleryTrack">
+                    
+                    <!-- Foto 1 (Potret 3:4) -->
+                    <div class="gallery-item">
+                        <img src="test1.jpeg" alt="Pelanggan TAN'S RENT CAR">
+                        <div class="gallery-overlay">
+                        </div>
+                    </div>
+                    
+                    <!-- Foto 2 -->
+                    <div class="gallery-item">
+                        <img src="test2.jpeg" alt="Pelanggan TAN'S RENT CAR">
+                        <div class="gallery-overlay">
+                        </div>
+                    </div>
+
+                    <!-- Foto 3 -->
+                    <div class="gallery-item">
+                        <img src="test3.jpeg" alt="Pelanggan TAN'S RENT CAR">
+                        <div class="gallery-overlay">
+                        </div>
+                    </div>
+
+                    <!-- Foto 4 -->
+                    <div class="gallery-item">
+                        <img src="test4.jpeg" alt="Pelanggan TAN'S RENT CAR">
+                        <div class="gallery-overlay">
+                        </div>
+                    </div>
+
+                    <!-- Foto 5 -->
+                    <div class="gallery-item">
+                        <img src="test5.jpeg" alt="Pelanggan TAN'S RENT CAR">
+                        <div class="gallery-overlay">
+                        </div>
+                    </div>
+                    
+                    <!-- Foto 6 -->
+                    <div class="gallery-item">
+                        <img src="test6.jpeg" alt="Pelanggan TAN'S RENT CAR">
+                        <div class="gallery-overlay">
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Tombol Navigasi Kanan -->
+                <button class="carousel-btn next" id="nextBtn" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;" class="reveal">
+                <!-- Ubah href ke URL tiktok asli TAN's Rent Car -->
+                <a href="https://www.tiktok.com/@tans.rent.cars?_r=1&_t=ZS-954TIKtgtpn" target="_blank" class="btn-outline" style="border: 2px solid var(--primary); padding: 12px 30px; border-radius: 50px;">
+                    <i class="fab fa-tiktok" style="font-size: 1.2rem;"></i> Lihat Lebih Banyak Momen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mitra Section -->
+    <section id="mitra" class="section mitra-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Mitra Kepercayaan</h2>
+                <p>Kepercayaan mitra dan korporat adalah prioritas utama kami.</p>
+            </div>
+            <div class="content-grid">
+                <div class="image-content reveal fade-left">
+                    <img src="asperda.jpg" alt="Asperda Mitra Tan's Rent Car">
+                </div>
+                <div class="text-content reveal fade-right">
+                    <h3>Dikelola Profesional oleh PT. TANS Anugerah Gemilang</h3>
+                    <p><strong>TAN'S RENT CAR</strong> beroperasi di bawah naungan manajemen profesional <strong>PT. TANS Anugerah Gemilang</strong>. Dedikasi kami telah diakui dan dipercaya luas dalam memenuhi kebutuhan penyewaan mobil harian maupun jangka panjang bagi berbagai lapisan klien.</p>
+                    <p>Mulai dari melayani pelanggan individu, memfasilitasi kebutuhan operasional perusahaan-perusahaan swasta ternama, hingga menjadi partner transportasi handal bagi berbagai instansi pemerintahan. Bergabung sebagai anggota dan mitra, kami secara aktif menjunjung tinggi integritas bisnis.</p>
+                    <p>Dengan menerapkan Standar Operasional Prosedur (SOP) pelayanan yang ketat, kami berkomitmen kuat memastikan setiap mitra dan pelanggan senantiasa merasakan keamanan bertransaksi serta kenyamanan perjalanan kelas satu bersama kami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Hubungi Kami</h2>
+                <p>Kami siap membantu dan melayani pemesanan Anda 24 Jam.</p>
+            </div>
+            
+            <div class="contact-info-grid reveal">
+                <div class="contact-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h4>Telepon / WhatsApp</h4>
+                    <p>0813-7523-4626</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email Support</h4>
+                    <p>tansanugerahgemilang@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Jam Operasional</h4>
+                    <p>24 Jam (Pemesanan Online)</p>
+                </div>
+            </div>
+
+            <div class="map-placeholder reveal fade-up">
+                <!-- Iframe Google Maps -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.336628693485!2d98.6372626147573!3d3.585888997390977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312fe2ab8ecba1%3A0x8e83b8b1767e2a9!2sJl.%20Beo%20No.17%2C%20Sei%20Sikambing%20B%2C%20Kec.%20Medan%20Sunggal%2C%20Kota%20Medan%2C%20Sumatera%20Utara%2020122!5e0!3m2!1sid!2sid!4v1610000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TAN'S RENT CAR</h3>
+                    <p>Menyediakan layanan rental mobil terpercaya dengan armada terawat dan pelayanan profesional sejak 2023. Prioritas utama kami adalah kepuasan Anda.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/6281375234626" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/tansrental?igsh=aW9obWxkbWVneWtj" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@tans.rent.cars?_r=1&_t=ZS-954TIKtgtpn" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Link Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="tentangkami.html"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+                        <li><a href="#mitra"><i class="fas fa-chevron-right"></i> Mitra</a></li>
+                        <li><a href="persyaratan.html"><i class="fas fa-chevron-right"></i> Persyaratan</a></li>
+                        <li><a href="armada.html"><i class="fas fa-chevron-right"></i> Armada</a></li>
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Layanan</h3>
+                    <ul class="footer-links">
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Rental Harian</a></li>
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Rental Bulanan</a></li>
+                        <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Antar Jemput Bandara</a></li>
+                        <li><a href="paket-wisata.html"><i class="fas fa-chevron-right"></i> Paket Wisata</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Info Kontak</h3>
+                    <ul class="footer-links">
+                        <!-- LINK GOOGLE MAPS -->
+                        <li>
+                            <a href="https://www.google.com/maps/place/3%C2%B035'09.2%22N+98%C2%B038'24.3%22E/@3.585895,98.6394513,196m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d3.585895!4d98.640095?hl=id&entry=ttu&g_ep=EgoyMDI2MDMzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" title="Buka di Google Maps">
+                                <i class="fas fa-map-marker-alt" style="align-self: flex-start; padding-top: 4px;"></i> 
+                                <span>Jl. Beo No. 17, Medan Sunggal</span>
+                            </a>
+                        </li>
+                        <li><a href="tel:081375234626"><i class="fas fa-phone"></i> 0813-7523-4626</a></li>
+                        <li><a href="mailto:tansanugerahgemilang@gmail.com"><i class="fas fa-envelope"></i> tansanugerahgemilang@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> 24 Jam Online</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 TAN'S RENT CAR. Hak Cipta Dilindungi | Design by <a href="https://www.instagram.com/beerage111/" target="_blank" style="color: var(--secondary); text-decoration: underline;">BRIT</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281375234626" class="whatsapp-float" target="_blank" title="Hubungi Kami di WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // --- Toggle Mobile Menu ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+
+        // Close menu clicking outside
+        document.addEventListener('click', function(e) {
+            if (mobileMenu.classList.contains('active') && !mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+                mobileMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // --- Efek Transparan Header saat Scroll ---
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.padding = '8px 0';
+                header.style.backgroundColor = 'rgba(0, 51, 102, 0.95)';
+            } else {
+                header.style.padding = '12px 0';
+                header.style.backgroundColor = 'rgba(0, 51, 102, 0.85)';
+            }
+        });
+
+        // --- Active Link Highlight saat Scroll ---
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a.nav-link');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if(pageYOffset >= (sectionTop - 120)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href').includes(current) && current !== '') {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // --- Animasi Scroll Reveal ---
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger saat halaman pertama dimuat
+
+        // --- Logika JS untuk Slider Galeri ---
+        const track = document.getElementById('galleryTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        // Fungsi menghitung jarak geser (lebar 1 item + gap)
+        const getScrollAmount = () => {
+            const item = track.querySelector('.gallery-item');
+            const gap = parseInt(window.getComputedStyle(track).gap) || 0;
+            return item.offsetWidth + gap;
+        };
+
+        // Tombol Geser Kanan
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+
+        // Tombol Geser Kiri
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+
+        // Auto-Play Slider
+        let autoPlayInterval = setInterval(() => {
+            // Jika sudah di ujung mentok kanan, kembalikan ke awal
+            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+            }
+        }, 3000); // Geser setiap 3 detik
+
+        // Hentikan autoplay saat disorot mouse (hover)
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
+        carouselWrapper.addEventListener('mouseenter', () => {
+            clearInterval(autoPlayInterval);
+        });
+
+        // Jalankan autoplay kembali saat mouse keluar
+        carouselWrapper.addEventListener('mouseleave', () => {
+            autoPlayInterval = setInterval(() => {
+                if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+                    track.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
