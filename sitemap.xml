@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://sitemaps.org">
+  <!-- Halaman Utama -->
+  <url>
+    <loc>https://tansrentcar.com</loc>
+    <lastmod>2026-04-04</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Halaman Armada/Mobil -->
+  <url>
+    <loc>https://tansrentcar.com</loc>
+    <lastmod>2026-04-04</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Halaman Persyaratan -->
+  <url>
+    <loc>https://tansrentcar.com</loc>
+    <lastmod>2026-04-04</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Halaman Tentang Kami -->
+  <url>
+    <loc>https://tansrentcar.com</loc>
+    <lastmod>2026-04-04</lastmod>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Halaman Kontak -->
+  <url>
+    <loc>https://tansrentcar.com</loc>
+    <lastmod>2026-04-04</lastmod>
+    <priority>0.70</priority>
+  </url>
+</urlset>
