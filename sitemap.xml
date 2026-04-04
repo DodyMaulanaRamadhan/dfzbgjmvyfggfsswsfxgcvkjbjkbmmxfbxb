@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://sitemaps.org">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tansrentcar.com</loc>
+    <loc>https://tansrentcar.com/</loc>
     <lastmod>2026-04-04</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://tansrentcar.com</loc>
-    <lastmod>2026-04-04</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://tansrentcar.com</loc>
+    <loc>https://tansrentcar.com/tentangkami.html</loc>
     <lastmod>2026-04-04</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://tansrentcar.com</loc>
+    <loc>https://tansrentcar.com/persyaratan.html</loc>
     <lastmod>2026-04-04</lastmod>
-    <priority>0.70</priority>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://tansrentcar.com</loc>
+    <loc>https://tansrentcar.com/armada.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://tansrentcar.com/kontak.html</loc>
     <lastmod>2026-04-04</lastmod>
     <priority>0.70</priority>
   </url>
