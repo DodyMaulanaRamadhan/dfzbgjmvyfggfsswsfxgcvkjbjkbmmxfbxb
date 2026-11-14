@@ -14,6 +14,11 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'sha256-/SyB4SQvWx8CmOQMzxcIfnTjiEfJ7byZ+X+lbn0sDOk=' 'sha256-081OdX7grD0vtEam7E6TSt5KcOsq+DF+vEXGzZIhljk=' 'sha256-boYmJisr/2beqpGK/QG5McG/4mrSDZeJEF7Q6U7xGfg=' 'sha256-ehp2W5Nan13dTA8aNzaSPcrvHQl4vR4N8kj1zIrgbaQ=' 'sha256-jIcQh0q7M0CPIDn12SlfPRF9BMRomxE0v2leIboPbpA=' 'sha256-ktTuqCOpj4cZv1M55PTt7jeLiDWiyABgf1ASRct//Ps=' 'sha256-nvpTxH3gyHTzVm3LO1HSWhigM2tS8hReYiIv9SK+35o=' 'sha256-pN1giZYBUJxh4R8BOmdFacSb4eOOpBSKWN7P8sgqJ30='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.font.im https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+
 
     <!-- === OPTIMASI PEFORMA AWAL === -->
     <!-- Preconnect ke server Font untuk mempercepat DNS Lookup -->
@@ -22,7 +27,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
     <!-- Preload Gambar Hero (LCP Optimization) Pastikan nama file sesuai! -->
-    <link rel="preload" as="image" href="Danau-Toba-Wisata-Danau-Toba.jpeg">
+    <link rel="preload" as="image" href="img/Danau-Toba-Wisata-Danau-Toba.webp" fetchpriority="high">
 
     <!-- === OPTIMASI SEO (SEARCH ENGINE OPTIMIZATION) === -->
     <title>Rental Mobil Medan Murah Lepas Kunci & Plus Supir | TAN'S RENT CAR</title>
@@ -37,7 +42,7 @@
     <meta property="og:description" content="Layanan sewa mobil murah, lepas kunci, dan pakai supir di Medan. Armada bersih, matic/manual, siap antar jemput Kualanamu & luar kota.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tansrentcar.com/">
-    <meta property="og:image" content="https://tansrentcar.com/logo_tans_rental_car-removebg-preview.png">
+    <meta property="og:image" content="https://tansrentcar.com/img/logo_tans_rental_car-removebg-preview.webp">
 
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
@@ -45,7 +50,7 @@
       "@context": "https://schema.org",
       "@type": "AutoRental",
       "name": "TAN'S RENT CAR - Rental Mobil Medan",
-      "image": "https://tansrentcar.com/logo_tans_rental_car-removebg-preview.png",
+      "image": "https://tansrentcar.com/img/logo_tans_rental_car-removebg-preview.webp",
       "@id": "https://tansrentcar.com/",
       "url": "https://tansrentcar.com/",
       "telephone": "+6281375234626",
@@ -57,7 +62,7 @@
     }
     </script>
 
-    <link rel="icon" href="logo_tans_rental_car-removebg-preview.png" type="image/png">
+    <link rel="icon" href="img/logo_tans_rental_car-removebg-preview.webp" type="image/webp">
     
     <!-- Pemuatan Font Asynchronous untuk mengatasi Render Blocking -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
@@ -90,7 +95,7 @@
         .btn-header-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,215,0,0.5);color:var(--primary)}
         .mobile-menu-btn{display:none;background:0 0;border:none;color:#fff;font-size:1.5rem;cursor:pointer;z-index:1001}
         
-        .hero{background:linear-gradient(135deg,rgba(0,51,102,0.85) 0,rgba(0,26,51,0.95) 100%),url(Danau-Toba-Wisata-Danau-Toba.jpeg) no-repeat center center/cover;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding-top:80px;position:relative;overflow:hidden}
+        .hero{background:linear-gradient(135deg,rgba(0,51,102,0.85) 0,rgba(0,26,51,0.95) 100%),url(img/Danau-Toba-Wisata-Danau-Toba.webp) no-repeat center center/cover;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding-top:80px;position:relative;overflow:hidden}
         .hero::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at top right,rgba(255,215,0,0.15) 0,transparent 60%)}
         .hero-content{max-width:850px;position:relative;z-index:2}
         .hero h1{font-size:3.5rem;margin-bottom:20px;font-weight:800;line-height:1.2;text-shadow:0 4px 15px rgba(0,0,0,0.4);animation:fadeInDown 1s cubic-bezier(0.175,0.885,0.32,1.275)}
@@ -231,7 +236,7 @@
         <div class="container header-container">
             <a href="index.html" class="logo">
                 <!-- Tambahkan width & height -->
-                <img src="logo_tans_rental_car-removebg-preview.png" alt="Logo TAN'S RENT CAR" width="150" height="45" fetchpriority="high">
+                <img src="img/logo_tans_rental_car-removebg-preview.webp" alt="Logo TAN'S RENT CAR" width="150" height="45" fetchpriority="high" loading="eager" decoding="async">
                 <h2>TAN'S RENT CAR</h2>
             </a>
 
@@ -295,7 +300,7 @@
                 </div>
                 <div class="image-content reveal fade-right">
                     <!-- Tambah loading lazy dan width/height -->
-                    <img src="tampilan_beranda_tentang_kami-removebg.jpeg" width="600" height="400" loading="lazy" alt="Kantor TAN'S RENT CAR Tempat Rental Mobil Medan Terpercaya">
+                    <img src="img/tampilan_beranda_tentang_kami-removebg.webp" width="600" height="400" loading="lazy" alt="Kantor TAN'S RENT CAR Tempat Rental Mobil Medan Terpercaya" decoding="async">
                 </div>
             </div>
         </div>
@@ -312,7 +317,7 @@
                 <div class="service-card reveal">
                     <div class="service-img-wrapper">
                         <!-- Tambah loading lazy dan width/height -->
-                        <img src="driver+supir.png" width="400" height="220" loading="lazy" alt="Rental Mobil Medan Dengan Supir / Driver">
+                        <img src="img/driver+supir.webp" width="400" height="220" loading="lazy" alt="Rental Mobil Medan Dengan Supir / Driver" decoding="async">
                         <div class="service-icon"><i class="fas fa-user-tie"></i></div>
                     </div>
                     <div class="service-content">
@@ -324,7 +329,7 @@
 
                 <div class="service-card reveal" style="transition-delay: 0.1s;">
                     <div class="service-img-wrapper">
-                        <img src="lepas-kunci.png" width="400" height="220" loading="lazy" alt="Rental Mobil Lepas Kunci Matic Medan Murah">
+                        <img src="img/lepas-kunci.webp" width="400" height="220" loading="lazy" alt="Rental Mobil Lepas Kunci Matic Medan Murah" decoding="async">
                         <div class="service-icon"><i class="fas fa-key"></i></div>
                     </div>
                     <div class="service-content">
@@ -336,7 +341,7 @@
 
                 <div class="service-card reveal" style="transition-delay: 0.2s;">
                     <div class="service-img-wrapper">
-                        <img src="sewaharian-bulanan.png" width="400" height="220" loading="lazy" alt="Rental Mobil Medan Harian dan Bulanan">
+                        <img src="img/sewaharian-bulanan.webp" width="400" height="220" loading="lazy" alt="Rental Mobil Medan Harian dan Bulanan" decoding="async">
                         <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
                     </div>
                     <div class="service-content">
@@ -348,7 +353,7 @@
 
                 <div class="service-card reveal" style="transition-delay: 0.3s;">
                     <div class="service-img-wrapper">
-                        <img src="mobil_pernikahan.png" width="400" height="220" loading="lazy" alt="Rental Mobil Pengantin Wedding Medan Alphard">
+                        <img src="img/mobil_pernikahan.webp" width="400" height="220" loading="lazy" alt="Rental Mobil Pengantin Wedding Medan Alphard" decoding="async">
                         <div class="service-icon"><i class="fas fa-heart"></i></div>
                     </div>
                     <div class="service-content">
@@ -360,7 +365,7 @@
 
                 <div class="service-card reveal" style="transition-delay: 0.4s;">
                     <div class="service-img-wrapper">
-                        <img src="paket_wisata.png" width="400" height="220" loading="lazy" alt="Rental Mobil Medan ke Danau Toba Berastagi Samosir">
+                        <img src="img/paket_wisata.webp" width="400" height="220" loading="lazy" alt="Rental Mobil Medan ke Danau Toba Berastagi Samosir" decoding="async">
                         <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
                     </div>
                     <div class="service-content">
@@ -385,7 +390,7 @@
                     <span class="car-badge badge-gold">Lepas Kunci / Driver</span>
                     <div class="car-img">
                         <!-- Tambah loading lazy dan width/height -->
-                        <img src="Honda Brio Matic.jpeg" width="400" height="200" loading="lazy" alt="Rental Mobil Brio Medan Matic Lepas Kunci">
+                        <img src="img/Honda Brio Matic.webp" width="400" height="200" loading="lazy" alt="Rental Mobil Brio Medan Matic Lepas Kunci" decoding="async">
                     </div>
                     <div class="car-info">
                         <h3>Honda Brio</h3>
@@ -402,7 +407,7 @@
                 <div class="car-card reveal" style="transition-delay: 0.1s;">
                     <span class="car-badge badge-gold">Lepas Kunci / Driver</span>
                     <div class="car-img">
-                        <img src="Toyota All New Avanza.jpeg" width="400" height="200" loading="lazy" alt="Rental Mobil Avanza Medan Murah">
+                        <img src="img/Toyota All New Avanza.webp" width="400" height="200" loading="lazy" alt="Rental Mobil Avanza Medan Murah" decoding="async">
                     </div>
                     <div class="car-info">
                         <h3>Toyota All New Avanza</h3>
@@ -419,7 +424,7 @@
                 <div class="car-card reveal" style="transition-delay: 0.2s;">
                     <span class="car-badge badge-red">Termasuk Driver</span>
                     <div class="car-img">
-                        <img src="Toyota Kijang Innova Zenix Q Hybrid.jpeg" width="400" height="200" loading="lazy" alt="Rental Mobil Innova Zenix Medan">
+                        <img src="img/Toyota Kijang Innova Zenix Q Hybrid.webp" width="400" height="200" loading="lazy" alt="Rental Mobil Innova Zenix Medan" decoding="async">
                     </div>
                     <div class="car-info">
                         <h3>Innova Zenix Hybrid</h3>
@@ -436,7 +441,7 @@
                 <div class="car-card reveal" style="transition-delay: 0.3s;">
                     <span class="car-badge badge-red">Termasuk Driver</span>
                     <div class="car-img">
-                        <img src="Toyota Alphard HEV.png" width="400" height="200" loading="lazy" alt="Rental Mobil Alphard Medan Mewah VIP">
+                        <img src="img/Toyota Alphard HEV.webp" width="400" height="200" loading="lazy" alt="Rental Mobil Alphard Medan Mewah VIP" decoding="async">
                     </div>
                     <div class="car-info">
                         <h3>Toyota Alphard HEV</h3>
@@ -469,7 +474,7 @@
                 <div class="testimonial-card reveal">
                     <div class="testimonial-header">
                         <div class="customer-img">
-                            <img src="apakatamereka1.jpeg" width="60" height="60" loading="lazy" alt="Ulasan Budi Santoso Rental Mobil Medan">
+                            <img src="img/apakatamereka1.webp" width="60" height="60" loading="lazy" alt="Ulasan Budi Santoso Rental Mobil Medan" decoding="async">
                         </div>
                         <div class="customer-info">
                             <h4>Budi Santoso</h4>
@@ -482,7 +487,7 @@
                 <div class="testimonial-card reveal" style="transition-delay: 0.2s;">
                     <div class="testimonial-header">
                         <div class="customer-img">
-                            <img src="apakatamereka2.jpeg" width="60" height="60" loading="lazy" alt="Ulasan Siti Rahmah Rental Mobil Alphard">
+                            <img src="img/apakatamereka2.webp" width="60" height="60" loading="lazy" alt="Ulasan Siti Rahmah Rental Mobil Alphard" decoding="async">
                         </div>
                         <div class="customer-info">
                             <h4>Siti Rahmah</h4>
@@ -495,7 +500,7 @@
                 <div class="testimonial-card reveal" style="transition-delay: 0.4s;">
                     <div class="testimonial-header">
                         <div class="customer-img">
-                            <img src="apakatamereka3.jpeg" width="60" height="60" loading="lazy" alt="Ulasan Agus Rental Mobil Avanza Lepas Kunci">
+                            <img src="img/apakatamereka3.webp" width="60" height="60" loading="lazy" alt="Ulasan Agus Rental Mobil Avanza Lepas Kunci" decoding="async">
                         </div>
                         <div class="customer-info">
                             <h4>Agus Prasetyo</h4>
@@ -520,12 +525,12 @@
                 <button class="carousel-btn prev" id="prevBtn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
 
                 <div class="carousel-track" id="galleryTrack">
-                    <div class="gallery-item"><img src="test1.jpeg" width="280" height="373" loading="lazy" alt="Pelanggan Rental Mobil Medan"><div class="gallery-overlay"></div></div>
-                    <div class="gallery-item"><img src="test2.jpeg" width="280" height="373" loading="lazy" alt="Foto Pelanggan Sewa Mobil"><div class="gallery-overlay"></div></div>
-                    <div class="gallery-item"><img src="test3.jpeg" width="280" height="373" loading="lazy" alt="Pelanggan Rental Avanza"><div class="gallery-overlay"></div></div>
-                    <div class="gallery-item"><img src="test4.jpeg" width="280" height="373" loading="lazy" alt="Momen Wisata Pelanggan"><div class="gallery-overlay"></div></div>
-                    <div class="gallery-item"><img src="test5.jpeg" width="280" height="373" loading="lazy" alt="Sewa Mobil Bandara"><div class="gallery-overlay"></div></div>
-                    <div class="gallery-item"><img src="test6.jpeg" width="280" height="373" loading="lazy" alt="Trip Danau Toba"><div class="gallery-overlay"></div></div>
+                    <div class="gallery-item"><img src="img/test1.webp" width="280" height="373" loading="lazy" alt="Pelanggan Rental Mobil Medan" decoding="async"><div class="gallery-overlay"></div></div>
+                    <div class="gallery-item"><img src="img/test2.webp" width="280" height="373" loading="lazy" alt="Foto Pelanggan Sewa Mobil" decoding="async"><div class="gallery-overlay"></div></div>
+                    <div class="gallery-item"><img src="img/test3.webp" width="280" height="373" loading="lazy" alt="Pelanggan Rental Avanza" decoding="async"><div class="gallery-overlay"></div></div>
+                    <div class="gallery-item"><img src="img/test4.webp" width="280" height="373" loading="lazy" alt="Momen Wisata Pelanggan" decoding="async"><div class="gallery-overlay"></div></div>
+                    <div class="gallery-item"><img src="img/test5.webp" width="280" height="373" loading="lazy" alt="Sewa Mobil Bandara" decoding="async"><div class="gallery-overlay"></div></div>
+                    <div class="gallery-item"><img src="img/test6.webp" width="280" height="373" loading="lazy" alt="Trip Danau Toba" decoding="async"><div class="gallery-overlay"></div></div>
                 </div>
 
                 <button class="carousel-btn next" id="nextBtn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
@@ -548,7 +553,7 @@
             </div>
             <div class="content-grid">
                 <div class="image-content reveal fade-left">
-                    <img src="asperda.jpg" width="600" height="400" loading="lazy" alt="Asperda Mitra Perusahaan Rental Mobil Medan">
+                    <img src="img/asperda.webp" width="600" height="400" loading="lazy" alt="Asperda Mitra Perusahaan Rental Mobil Medan" decoding="async">
                 </div>
                 <div class="text-content reveal fade-right">
                     <h3>Dikelola Profesional oleh PT. TANS Anugerah Gemilang</h3>
