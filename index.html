@@ -101,7 +101,15 @@
     </script>
 
     <link rel="icon" href="img/logo_tans_rental_car-removebg-preview.webp" type="image/webp">
-    
+
+    <!-- Preconnect untuk mempercepat font & icon eksternal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Preload LCP hero background -->
+    <link rel="preload" as="image" href="img/Danau-Toba-Wisata-Danau-Toba.webp" fetchpriority="high">
+
     <!-- Pemuatan Font Asynchronous untuk mengatasi Render Blocking -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
