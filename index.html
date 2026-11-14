@@ -269,6 +269,28 @@
         .faq-list summary{font-weight:700;color:var(--primary);cursor:pointer;list-style:none}
         .faq-list summary::-webkit-details-marker{display:none}
         .faq-list p{margin-top:12px;color:var(--gray);line-height:1.7}
+
+        /* Visual polish & accordion */
+        .section{padding:110px 0}
+        .section-title h2{font-size:2.2rem;letter-spacing:-0.02em}
+        .section-title p{line-height:1.7}
+        .faq-list{max-width:860px}
+        .faq-list details{transition:box-shadow .25s ease,border-color .25s ease}
+        .faq-list details:hover{box-shadow:var(--shadow-md);border-color:rgba(0,51,102,.18)}
+        .faq-list summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:4px 0}
+        .faq-list summary::after{content:'078';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--secondary);transition:transform .25s ease;font-size:.9rem}
+        .faq-list details[open] summary::after{transform:rotate(180deg)}
+        .faq-list details[open]{border-color:rgba(0,51,102,.22)}
+        .faq-list p{font-size:.95rem}
+        .seo-areas-details{max-width:860px;margin:30px auto 0;text-align:center}
+        .seo-areas-details summary{cursor:pointer;color:#9ca3af;font-size:.9rem;list-style:none;padding:10px 0}
+        .seo-areas-details summary::-webkit-details-marker{display:none}
+        .seo-areas-details summary::before{content:'+';margin-right:8px;color:var(--secondary);font-weight:700}
+        .seo-areas-details[open] summary::before{content:'-'}
+        .seo-areas{margin-top:12px;padding-top:12px;font-size:.82rem;color:#9ca3af}
+        .whatsapp-float{bottom:24px;right:24px}
+        @media (max-width:768px){.section{padding:72px 0}.section-title h2{font-size:1.9rem}.whatsapp-float{width:60px;height:60px;font-size:2rem}}
+
     </style>
 </head>
 
@@ -310,9 +332,8 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container hero-content">
-            <h1>Tan's Rent Car (Tans Rent Car): Sewa & Rental Mobil Medan <span>Murah</span></h1>
-            <p>TAN'S RENT CAR menyediakan jasa sewa mobil terdekat di Medan 24 Jam. Armada terawat, harga kompetitif,
-                siap antar jemput Bandara Kualanamu, dinas perusahaan, hingga pariwisata.</p>
+            <h1>Sewa Mobil Medan <span>Tanpa Ribet</span></h1>
+            <p>Armada terawat, harga kompetitif, siap antar jemput bandara & wisata.</p>
             <div class="hero-buttons">
                 <a href="#fleet" class="btn-primary"><i class="fas fa-car"></i> Lihat Armada</a>
                 <a href="https://wa.me/6281375234626" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i
@@ -325,7 +346,7 @@
     <section id="about" class="section about-section">
         <div class="container">
             <div class="section-title reveal">
-                <h2>Tentang Tan's Rent Car (Tans Rent Car) Medan</h2>
+                <h2>Tentang Kami</h2>
                 <p>Perusahaan jasa rental mobil di Medan terpercaya yang berdedikasi memberikan pelayanan transportasi terbaik.</p>
             </div>
             <div class="content-grid">
@@ -352,7 +373,7 @@
     <section id="services" class="section services-section">
         <div class="container">
             <div class="section-title reveal">
-                <h2>Layanan Rental Mobil Medan Terpercaya</h2>
+                <h2>Layanan Kami</h2>
                 <p>Solusi transportasi komprehensif yang dirancang khusus untuk memenuhi segala kebutuhan mobilitas Anda.</p>
             </div>
             <div class="services-grid">
@@ -364,7 +385,7 @@
                     </div>
                     <div class="service-content">
                         <h3>Rental Mobil Plus Driver</h3>
-                        <p>Nikmati perjalanan santai dengan <strong>rental mobil di medan dengan supir</strong> profesional.</p>
+                        <p>Nikmati perjalanan santai bersama driver profesional kami.</p>
                         <a href="https://wa.me/6281375234626" target="_blank" rel="noopener noreferrer" class="btn-outline">Pesan Sekarang <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
@@ -376,7 +397,7 @@
                     </div>
                     <div class="service-content">
                         <h3>Sewa Mobil Lepas Kunci</h3>
-                        <p>Bebas berkendara sendiri dengan <strong>rental mobil medan lepas kunci matic</strong>.</p>
+                        <p>Bebas berkendara sendiri dengan unit matic yang nyaman.</p>
                         <a href="https://wa.me/6281375234626" target="_blank" rel="noopener noreferrer" class="btn-outline">Pesan Sekarang <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
@@ -388,7 +409,7 @@
                     </div>
                     <div class="service-content">
                         <h3>Rental Harian & Bulanan</h3>
-                        <p>Layanan <strong>rental mobil medan bulanan</strong> untuk operasional perusahaan atau sewa harian.</p>
+                        <p>Solusi sewa harian hingga bulanan untuk kebutuhan pribadi maupun perusahaan.</p>
                         <a href="https://wa.me/6281375234626" target="_blank" rel="noopener noreferrer" class="btn-outline">Pesan Sekarang <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
@@ -400,7 +421,7 @@
                     </div>
                     <div class="service-content">
                         <h3>Mobil Pengantin (Wedding)</h3>
-                        <p>Hadirkan kemewahan di hari spesial Anda. Kami menyediakan <strong>rental mobil alphard medan</strong>.</p>
+                        <p>Hadirkan kemewahan di hari spesial Anda dengan unit premium.</p>
                         <a href="https://wa.me/6281375234626" target="_blank" rel="noopener noreferrer" class="btn-outline">Pesan Sekarang <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
@@ -412,7 +433,7 @@
                     </div>
                     <div class="service-content">
                         <h3>Paket Wisata & Luar Kota</h3>
-                        <p>Layanan drop off dan tour liburan. Sedia <strong>rental mobil medan ke danau toba</strong>, Berastagi.</p>
+                        <p>Layanan drop off dan tour liburan ke Danau Toba, Berastagi, dan sekitarnya.</p>
                         <a href="paket-wisata.html" class="btn-outline">Lihat Paket <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
@@ -424,7 +445,7 @@
     <section id="fleet" class="section fleet-section">
         <div class="container">
             <div class="section-title reveal">
-                <h2>Daftar Armada Rental Mobil Medan</h2>
+                <h2>Armada Pilihan</h2>
                 <p>Pilih kendaraan yang paling sesuai. Mulai dari city car murah, minibus keluarga, hingga luxury VIP car.</p>
             </div>
             <div class="fleet-grid">
@@ -497,7 +518,6 @@
                     </div>
                 </div>
             </div>
-            <p class="reveal" style="text-align:center; margin-top:24px; color:var(--gray);">Tersedia sewa Alphard Medan, sewa Innova Zenix Medan, sewa Fortuner Medan, sewa Pajero Medan, rental mobil manual & matic Medan, serta layanan rental mobil Medan 24 jam untuk kebutuhan pribadi, bisnis, wisata, dan wedding/wisuda.</p>
             <div style="text-align: center; margin-top: 50px;" class="reveal">
                 <a href="armada.html" class="btn-outline" style="font-size: 1.1rem; border: 2px solid var(--primary); padding: 12px 30px; border-radius: 50px;">
                     Lihat Semua Armada (Hiace, Reborn, Pajero, dll) <i class="fas fa-arrow-right"></i>
@@ -510,7 +530,7 @@
     <section class="section testimonials-section">
         <div class="container">
             <div class="section-title reveal">
-                <h2>Ulasan Pelanggan Rental Mobil Medan</h2>
+                <h2>Ulasan Pelanggan</h2>
                 <p>Ratusan pelanggan dari penjuru kota telah membuktikan kenyamanan layanan TAN'S RENT CAR.</p>
             </div>
             <div class="testimonial-grid">
@@ -560,7 +580,7 @@
     <section id="gallery" class="section gallery-section">
         <div class="container">
             <div class="section-title reveal">
-                <h2>Galeri Pelanggan Rental Mobil Medan</h2>
+                <h2>Galeri</h2>
                 <p>Momen berharga pelanggan setia kami bersama armada transportasi TAN'S RENT CAR.</p>
             </div>
 
@@ -591,7 +611,7 @@
     <section id="mitra" class="section mitra-section">
         <div class="container">
             <div class="section-title reveal">
-                <h2>Mitra Rental Mobil Medan</h2>
+                <h2>Mitra Kami</h2>
                 <p>Kepercayaan mitra dan perusahaan (korporat) adalah prioritas utama layanan sewa mobil kami.</p>
             </div>
             <div class="content-grid">
@@ -611,7 +631,7 @@
     <section id="faq" class="section faq-section">
         <div class="container">
             <div class="section-title reveal">
-                <h2>FAQ Rental Mobil Medan - Tan's Rent Car (Tans Rent Car)</h2>
+                <h2>Pertanyaan Umum (FAQ)</h2>
                 <p>Pertanyaan yang sering diajukan seputar rental mobil Medan, Medan Sunggal, lepas kunci, plus supir, dan wisata.</p>
             </div>
             <div class="faq-list">
@@ -679,7 +699,7 @@
     <section id="contact" class="section contact-section">
         <div class="container">
             <div class="section-title reveal">
-                <h2>Hubungi Rental Mobil Medan Terdekat</h2>
+                <h2>Hubungi Kami</h2>
                 <p>Kami siap membantu booking & pemesanan Anda 24 Jam.</p>
             </div>
 
@@ -744,9 +764,12 @@
                 </div>
             </div>
 
-            <div class="seo-areas">
-                <strong>Area Layanan & Pencarian Terpopuler Kami:</strong> Kami melayani jasa <em>rental mobil medan</em> 24 jam, termasuk <em>rental mobil medan timur, medan barat, polonia, denai, amplas, tembung, medan johor, helvetia, marelan, sunggal, selayang, padang bulan</em>, hingga pengantaran ke <em>bandara Kualanamu, Danau Toba, Parapat, Berastagi, Samosir, Binjai, Sibolga, Banda Aceh, Pekanbaru</em>. Layanan meliputi <em>rental mobil medan murah lepas kunci</em>, <em>sewa mobil medan plus driver</em>, <em>rental mobil medan manual matic</em>, <em>rental mobil medan untuk wisata</em>, dan <em>rental mobil medan untuk wedding wisuda</em>. Kami menyediakan unit <em>Avanza, Innova Reborn, Zenix, Hiace, Alphard, Brio, Pajero, Fortuner, Double Cabin</em>, hingga mobil <em>Minibus / L300 / Elf / Blind Van</em> dengan harga <em>murah, aman, dan terpercaya</em>.
-            </div>
+            <details class="seo-areas-details">
+                <summary>Area layanan & pencarian populer</summary>
+                <div class="seo-areas">
+                    Kami melayani <em>rental mobil medan</em> 24 jam di Medan Timur, Medan Barat, Polonia, Denai, Amplas, Tembung, Johor, Helvetia, Marelan, Sunggal, Selayang, dan sekitarnya; antar jemput Bandara Kualanamu, Danau Toba, Parapat, Berastagi, Samosir, Binjai, Sibolga, Banda Aceh, Pekanbaru. Layanan: lepas kunci, plus driver, manual/matic, wisata, wedding/wisuda. Unit: Avanza, Innova Reborn, Zenix, Hiace, Alphard, Brio, Pajero, Fortuner, dan lainnya.
+                </div>
+            </details>
             <div class="copyright"><p>&copy; 2026 TAN'S RENT CAR MEDAN. Hak Cipta Dilindungi | Design by <a href="https://www.instagram.com/beerage111/" target="_blank" rel="noopener noreferrer" style="color: var(--secondary); text-decoration: underline;">BRIT</a>.</p></div>
         </div>
     </footer>
