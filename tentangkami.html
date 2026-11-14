@@ -617,6 +617,35 @@
             .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 1.8rem; }
         }
     </style>
+
+    <!-- Perbaikan posisi floating WhatsApp agar tidak keluar viewport -->
+    <style>
+        html, body { overflow-x: hidden; max-width: 100%; }
+        img, video, iframe, table { max-width: 100%; height: auto; }
+        .whatsapp-float {
+            position: fixed;
+            left: auto;
+            margin: 0;
+            right: 16px;
+            right: max(16px, env(safe-area-inset-right));
+            bottom: 16px;
+            bottom: max(16px, env(safe-area-inset-bottom));
+            width: 56px;
+            height: 56px;
+            font-size: 1.9rem;
+            max-width: calc(100vw - 32px);
+        }
+        @media (min-width: 769px) {
+            .whatsapp-float {
+                right: 30px;
+                bottom: 30px;
+                width: 65px;
+                height: 65px;
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+
 </head>
 <body>
     <!-- Header -->
