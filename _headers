@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'sha256-/SyB4SQvWx8CmOQMzxcIfnTjiEfJ7byZ+X+lbn0sDOk=' 'sha256-6Nbt3HDarAgcZtZJyY+FLPensQbc+hHSVS0FXFqcZlA=' 'sha256-WEUgWrhBNvINw/AxRox1UqXn4tEcja2JkaOef3v3x+8=' 'sha256-boYmJisr/2beqpGK/QG5McG/4mrSDZeJEF7Q6U7xGfg=' 'sha256-eWEBRZVR6ZrWMNyUSVA+ciytlZG2GgDoQEsAKkfHtdo=' 'sha256-ehp2W5Nan13dTA8aNzaSPcrvHQl4vR4N8kj1zIrgbaQ=' 'sha256-jIcQh0q7M0CPIDn12SlfPRF9BMRomxE0v2leIboPbpA=' 'sha256-ktTuqCOpj4cZv1M55PTt7jeLiDWiyABgf1ASRct//Ps=' 'sha256-nvpTxH3gyHTzVm3LO1HSWhigM2tS8hReYiIv9SK+35o='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.font.im https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'sha256-/SyB4SQvWx8CmOQMzxcIfnTjiEfJ7byZ+X+lbn0sDOk=' 'sha256-6Nbt3HDarAgcZtZJyY+FLPensQbc+hHSVS0FXFqcZlA=' 'sha256-WEUgWrhBNvINw/AxRox1UqXn4tEcja2JkaOef3v3x+8=' 'sha256-boYmJisr/2beqpGK/QG5McG/4mrSDZeJEF7Q6U7xGfg=' 'sha256-eWEBRZVR6ZrWMNyUSVA+ciytlZG2GgDoQEsAKkfHtdo=' 'sha256-ehp2W5Nan13dTA8aNzaSPcrvHQl4vR4N8kj1zIrgbaQ=' 'sha256-jIcQh0q7M0CPIDn12SlfPRF9BMRomxE0v2leIboPbpA=' 'sha256-ktTuqCOpj4cZv1M55PTt7jeLiDWiyABgf1ASRct//Ps=' 'sha256-nvpTxH3gyHTzVm3LO1HSWhigM2tS8hReYiIv9SK+35o='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
@@ -19,6 +19,9 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
   Cache-Control: public, max-age=31536000, immutable
 
 /*.html
