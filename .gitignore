@@ -1,0 +1,5 @@
+# Berkas internal/laporan yang tidak boleh ikut terpublikasi
+SEO Audit*.pdf
+*.pdf
+.DS_Store
+Thumbs.db
