@@ -702,3 +702,24 @@ img, video, table { max-width: 100%; height: auto; }
     transform: translate(0, 0);
     transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+/* Status header saat halaman di-scroll (dipindah dari inline style agar CSP tanpa unsafe-inline) */
+header.is-scrolled {
+    padding: 8px 0;
+    background-color: rgba(0, 51, 102, 0.95);
+}
+
+/* Kotak pesan error formulir (dibuat oleh JS) */
+.form-error {
+    color: #b00020;
+    font-weight: 600;
+    margin: 12px 0;
+    line-height: 1.5;
+}
+
+/* Catatan <noscript> pada formulir */
+.noscript-note {
+    margin-bottom: 16px;
+    color: #b00020;
+    font-weight: 600;
+}

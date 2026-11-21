@@ -74,11 +74,8 @@
       if (ticking) return;
       ticking = true;
       window.requestAnimationFrame(function () {
-        var scrolled = window.scrollY > 50;
-        header.style.padding = scrolled ? '8px 0' : '12px 0';
-        header.style.backgroundColor = scrolled
-          ? 'rgba(0, 51, 102, 0.95)'
-          : 'rgba(0, 51, 102, 0.85)';
+        // Kelas, bukan inline style: CSP style-src tanpa 'unsafe-inline'.
+        header.classList.toggle('is-scrolled', window.scrollY > 50);
         ticking = false;
       });
     }, { passive: true });
@@ -222,7 +219,7 @@
         Array.prototype.forEach.call(cards, function (card) {
           card.classList.remove('filter-anim');
           var show = value === 'all' || card.getAttribute('data-category') === value;
-          card.style.display = show ? 'flex' : 'none';
+          card.classList.toggle('is-filtered-out', !show);
           if (show) {
             void card.offsetWidth; // paksa reflow agar animasi berjalan ulang
             card.classList.add('filter-anim');
@@ -302,7 +299,7 @@
         box = document.createElement('p');
         box.id = 'formError';
         box.setAttribute('role', 'alert');
-        box.style.cssText = 'color:#b00020;font-weight:600;margin:12px 0;line-height:1.5';
+        box.className = 'form-error';
         form.insertBefore(box, form.firstChild);
       }
       box.textContent = message; // textContent, bukan innerHTML

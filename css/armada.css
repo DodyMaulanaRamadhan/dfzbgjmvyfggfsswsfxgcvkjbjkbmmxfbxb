@@ -671,3 +671,14 @@ img, video, table { max-width: 100%; height: auto; }
     transform: translate(0, 0);
     transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+/* Status header saat halaman di-scroll (dipindah dari inline style agar CSP tanpa unsafe-inline) */
+header.is-scrolled {
+    padding: 8px 0;
+    background-color: rgba(0, 51, 102, 0.95);
+}
+
+/* Kartu armada yang tersaring keluar (pengganti style.display dari JS) */
+.armada-card.is-filtered-out {
+    display: none;
+}
